@@ -1,0 +1,7 @@
+account:
+  login: "julienraigneau"
+  api: "fa9f78bb41d6514"
+replace:
+  state:
+    WARNING: WARNING
+    CRITICAL: CRITIQUE
