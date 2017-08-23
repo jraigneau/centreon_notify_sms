@@ -5,6 +5,7 @@ require 'optparse'
 require 'optparse/time'
 require 'net/smtp'
 require 'net/http'
+require 'net/https' #for ruby 1.8.x
 require 'json'
 require 'uri'
 
@@ -118,7 +119,7 @@ if type == "PROBLEM"
   message = "<DATA><MESSAGE><![CDATA[Alerte #{state} sur #{hostname}/#{service}@#{time.hour}:#{time.min} #{details}]]></MESSAGE><TPOA>SUP iDNA</TPOA><SMS><MOBILEPHONE>#{phone_number}</MOBILEPHONE></SMS></DATA>"
 elsif type == "RECOVERY"
   message = "<DATA><MESSAGE><![CDATA[Fin d'alerte #{state} sur #{hostname}/#{service}@#{time.hour}:#{time.min} #{details}]]></MESSAGE><TPOA>SUP iDNA</TPOA><SMS><MOBILEPHONE>#{phone_number}</MOBILEPHONE></SMS></DATA>"
-elsif condition
+else
   message = "<DATA><MESSAGE><![CDATA[#{type} #{state} sur #{hostname}/#{service}@#{time.hour}:#{time.min} #{details}]]></MESSAGE><TPOA>SUP iDNA</TPOA><SMS><MOBILEPHONE>#{phone_number}</MOBILEPHONE></SMS></DATA>"
 end
 
